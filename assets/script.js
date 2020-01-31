@@ -46,7 +46,7 @@ let questions = [
     else{
       wrongAnswer();
     }
-    count = 0;
+  
     if(runningQuestion < lastQuestion){
       runningQuestion++;
       renderQuestion();
@@ -56,7 +56,7 @@ let questions = [
     }
   }
 
-  function correctAnswer() {
+  function rightAnswer() {
     result.textContent = "You're right!"
     .result: {
       color = green
