@@ -22,12 +22,28 @@ let questions = [
   choiceA: "a) :D",
   choiceB: "b) <3",
   choiceC: "c) =>",
-  choiceD: "d) ",
+  choiceD: "d) ;)",
   correct: "C"
-  } 
+  }, 
+  {
+    question: "A variable cannot be declared using whhich prefix?",
+    choiceA: "a) let",
+    choiceB: "b) var",
+    choiceC: "c) const",
+    choiceD: "d) namaste",
+    correct: "D"
+  },
+  {
+    question: "Fill in the blank: Javascript is a ___ oriented programming language.",
+    choiceA: "a) banana stand",
+    choiceB: "b) object",
+    choiceC: "c) bluth",
+    choiceD: "d) arrested development",
+    correct: "B"
+  }
   ]
 
-  let lastQuestion = questions.length -1
+  let lastQuestion = questions.length -1;
   let runningQuestion = 0;
 
   function renderQuestion(){
@@ -39,21 +55,32 @@ let questions = [
     choiceD.textContent = q.choiceD;
   }
 
+  // let count = 60;
+
+  // function renderCountDown(count){
+    
+  //   var t=date.parse(endtime) - Date.parse(new Date());
+  //   var count = math.floor( (t/1000);
+
+  //   countDown.textContent = count;
+
+  // }
+
   function checkAnswer(answer){
     if (answer === questions[runningQuestion].correct){
-      rightAnswer();
+      rightAnswer()
+      if (runningQuestion < lastQuestion) {
+        runningQuestion++;
+        renderQuestion();
+      }
+      else if (runningQuestion === lastQuestion) {
+        scoreRender();
+      }
     }
-    else{
+    else {
       wrongAnswer();
     }
   
-    if(runningQuestion < lastQuestion){
-      runningQuestion++;
-      renderQuestion();
-    }
-      else{
-       scoreRender();
-    }
   }
 
   function rightAnswer() {
@@ -62,13 +89,11 @@ let questions = [
   }
 
   function wrongAnswer() {
-    result.textContent = "You're wrong!"
+    result.textContent = "You're wrong! Try again."
   }
- 
-
-
 
 renderQuestion()
+// renderCountDown()
 
 
 
