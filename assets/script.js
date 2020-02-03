@@ -26,7 +26,7 @@ let questions = [
   correct: "C"
   }, 
   {
-    question: "A variable cannot be declared using whhich prefix?",
+    question: "A variable cannot be declared using which prefix?",
     choiceA: "a) let",
     choiceB: "b) var",
     choiceC: "c) const",
@@ -43,7 +43,7 @@ let questions = [
   }
   ]
 
-  let lastQuestion = questions.length -1;
+  let lastQuestion = questions.length -1
   let runningQuestion = 0;
 
   function renderQuestion(){
@@ -55,20 +55,10 @@ let questions = [
     choiceD.textContent = q.choiceD;
   }
 
-  // let count = 60;
-
-  // function renderCountDown(count){
-    
-  //   var t=date.parse(endtime) - Date.parse(new Date());
-  //   var count = math.floor( (t/1000);
-
-  //   countDown.textContent = count;
-
-  // }
 
   function checkAnswer(answer){
     if (answer === questions[runningQuestion].correct){
-      rightAnswer()
+      rightAnswer();
       if (runningQuestion < lastQuestion) {
         runningQuestion++;
         renderQuestion();
@@ -77,7 +67,7 @@ let questions = [
         scoreRender();
       }
     }
-    else {
+    else{
       wrongAnswer();
     }
   
@@ -88,7 +78,6 @@ let questions = [
   
     }
     
-  }
 
   function wrongAnswer() {
     result.textContent = "You're wrong! Try again."
