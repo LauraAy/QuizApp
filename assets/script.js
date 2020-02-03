@@ -5,8 +5,11 @@ const choiceB = document.getElementById("B");
 const choiceC = document.getElementById("C");
 const choiceD = document.getElementById("D");
 const result = document.getElementById("result");
-const countDown = document.getElementById("countDown")
+const countDown = document.getElementById("countDown");
 
+let score = 0;
+
+// Define questions for quiz here
 let questions = [
 {
   question: "Which of these is not a common data type?",
@@ -43,7 +46,20 @@ let questions = [
   }
   ]
 
-  let lastQuestion = questions.length -1
+// Set timer
+
+var count = 60;
+var activeCountdown = setInterval(function () {
+  countDown.textContent = count;
+  count--
+  if (count === 0) {
+    countDown.textContent = `Time's up! Your score is: ${score}`;
+    clearInterval(activeCountdown)
+  }
+}, 1000);
+
+  // Render questions here
+  let lastQuestion = questions.length -1;
   let runningQuestion = 0;
 
   function renderQuestion(){
@@ -56,23 +72,34 @@ let questions = [
   }
 
 
+  // Check answer results here
   function checkAnswer(answer){
     if (answer === questions[runningQuestion].correct){
-      rightAnswer();
+      rightAnswer()
+      score === score++;
       if (runningQuestion < lastQuestion) {
         runningQuestion++;
         renderQuestion();
       }
-      else if (runningQuestion === lastQuestion) {
-        scoreRender();
+      else if (runningQuestion = lastQuestion) {
+          clearInterval(activeCountdown)
+          countDown.textContent = `Your final score is: ${score}`;
       }
     }
-    else{
-      wrongAnswer();
-    }
-  
-  }
 
+    else if (answer !== questions[runningQuestion].correct) {
+      wrongAnswer();
+      count = count - 10;
+        if (runningQuestion < lastQuestion) {
+          runningQuestion++;
+          renderQuestion();
+        }
+        else {
+          clearInterval(activeCountdown)
+          countDown.textContent = `Your final score is: ${score}`;
+        }
+      }
+   }  
   function rightAnswer() {
     result.textContent = "You're right!"
   
@@ -80,11 +107,16 @@ let questions = [
     
 
   function wrongAnswer() {
-    result.textContent = "You're wrong! Try again."
+    result.textContent = "You're wrong! You lost 10 seconds on the clock."
   }
 
+
+
+
 renderQuestion()
-// renderCountDown()
+
+
+
 
 
 
