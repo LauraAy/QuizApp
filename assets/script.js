@@ -85,6 +85,9 @@ let questions = [
 
   function rightAnswer() {
     result.textContent = "You're right!"
+    .result: {
+      color = green
+    }
     
   }
 
